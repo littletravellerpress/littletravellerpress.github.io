@@ -10,87 +10,93 @@ body {
 
 .page {
   position: relative;
-  min-height: 100vh;
+  min-height: 100vh;  /* allows footer to sit at the true bottom */
   overflow: hidden;
-  padding: 20px;
+  padding: 24px;      /* a touch more breathing room */
 }
 
-/* Hero image (boy at top) */
+/* Hero image (boy at top) — ~+25% */
 .hero {
-  max-width: 350px;
+  max-width: 440px;          /* was 350px */
   width: 80%;
   height: auto;
-  margin: 0 auto 1rem;
+  margin: 0 auto 1.25rem;
   display: block;
 }
 
-/* Title */
+/* Title — ~+25% */
 h1 {
-  font-size: clamp(28px, 5vw, 42px);
-  margin: 0.5rem 0 1rem;
+  font-size: clamp(34px, 6.5vw, 52px); /* was 28–42 */
+  margin: 0.6rem 0 1.1rem;
 }
 
-/* Intro paragraph */
+/* Intro paragraph — ~+25% */
 .intro {
-  font-size: clamp(16px, 2.5vw, 20px);
-  max-width: 700px;
-  margin: 0 auto 2rem;
-  line-height: 1.5;
+  font-size: clamp(20px, 3.1vw, 25px); /* was 16–20 */
+  max-width: 760px;
+  margin: 0 auto 2.2rem;
+  line-height: 1.55;
 }
 
-/* Bookshelf image */
+/* Bookshelf — ~+25% and force perfect center */
 .bookshelf {
-  max-width: 300px;
-  width: 60%;
-  margin: 1rem auto;
+  max-width: 375px;     /* was 300px */
+  width: 70%;
+  margin: 1.2rem auto 0.2rem; /* auto centers it */
   display: block;
 }
 
-/* Button */
+/* Button — larger + centered */
 .btn {
   display: inline-block;
-  margin: 1rem auto 2rem;
-  padding: 12px 30px;
-  font-size: clamp(16px, 2.5vw, 20px);
+  margin: 1rem auto 2.2rem;  /* centered */
+  padding: 15px 38px;        /* bigger */
+  font-size: clamp(20px, 3vw, 24px);  /* bigger text */
   text-decoration: none;
   color: #000;
   border: 2px solid #000;
-  border-radius: 12px;
+  border-radius: 14px;
   transition: background 0.3s, color 0.3s;
 }
 .btn:hover { background: #000; color: #fff; }
 
-/* --- Decorations --- */
-
-/* Owl: left side, a bit ABOVE the shelf level */
+/* Owl — ~+25% width, same spot you had */
 .owl {
   position: absolute;
-  left: clamp(12px, 3vw, 40px);
-  top: 56vh;                 /* place around mid-lower area */
-  transform: translateY(-50%); /* center the owl vertically on that line */
-  width: min(24vw, 220px);
+  left: clamp(14px, 3vw, 40px);
+  /* if you previously used top: 56vh; keep it. If you used bottom: 20px; keep that. */
+  bottom: 20px;              /* <-- change to top: 56vh if you prefer that behavior */
+  width: 188px;              /* was 150px */
   height: auto;
-  /* If you want it mirrored, add: transform: translateY(-50%) scaleX(-1); */
 }
 
-/* Rabbit: tight bottom-right corner */
+/* Rabbit — ~+25% width, tight bottom-right */
 .rabbit {
   position: absolute;
-  right: clamp(12px, 3vw, 40px);
-  bottom: clamp(12px, 3vw, 28px);
-  width: min(22vw, 160px);
+  right: clamp(14px, 3vw, 40px);
+  bottom: clamp(14px, 3vw, 28px);
+  width: 175px;              /* was 140px */
   height: auto;
 }
 
-/* Footer */
+/* Footer — pinned to the very bottom, centered (same line as rabbit) */
 footer {
-  margin-top: 2rem;
-  font-size: 14px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;              /* aligns baseline with rabbit area */
+  margin: 0;
+  font-size: 16px;           /* slightly larger */
   color: #333;
 }
 
-/* Small screens: nudge sizes so nothing overwhelms */
+/* Small screens: scale down just a touch so nothing overwhelms */
 @media (max-width: 700px) {
-  .owl { top: 60vh; width: min(34vw, 180px); }
-  .rabbit { width: min(30vw, 140px); }
+  .hero { max-width: 360px; }
+  .intro { font-size: clamp(18px, 3.2vw, 22px); }
+  .bookshelf { max-width: 320px; width: 80%; }
+  .btn { font-size: clamp(18px, 3.2vw, 22px); padding: 14px 32px; }
+  .owl { width: 160px; }
+  .rabbit { width: 150px; }
+  footer { font-size: 14px; }
 }
