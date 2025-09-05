@@ -58,26 +58,27 @@ h1 {
   border-radius: 12px;
   transition: background 0.3s, color 0.3s;
 }
-.btn:hover {
-  background: #000;
-  color: #fff;
-}
+.btn:hover { background: #000; color: #fff; }
 
-/* Decorative owl (bottom left) */
+/* --- Decorations --- */
+
+/* Owl: left side, a bit ABOVE the shelf level */
 .owl {
   position: absolute;
-  left: 20px;
-  bottom: 120px;
-  width: 150px;
+  left: clamp(12px, 3vw, 40px);
+  top: 56vh;                 /* place around mid-lower area */
+  transform: translateY(-50%); /* center the owl vertically on that line */
+  width: min(24vw, 220px);
   height: auto;
+  /* If you want it mirrored, add: transform: translateY(-50%) scaleX(-1); */
 }
 
-/* Decorative rabbit (bottom right) */
+/* Rabbit: tight bottom-right corner */
 .rabbit {
   position: absolute;
-  right: 20px;
-  bottom: 20px;
-  width: 140px;
+  right: clamp(12px, 3vw, 40px);
+  bottom: clamp(12px, 3vw, 28px);
+  width: min(22vw, 160px);
   height: auto;
 }
 
@@ -86,4 +87,10 @@ footer {
   margin-top: 2rem;
   font-size: 14px;
   color: #333;
+}
+
+/* Small screens: nudge sizes so nothing overwhelms */
+@media (max-width: 700px) {
+  .owl { top: 60vh; width: min(34vw, 180px); }
+  .rabbit { width: min(30vw, 140px); }
 }
