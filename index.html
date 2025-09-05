@@ -21,116 +21,127 @@
       font-family: "Schoolbell", system-ui, -apple-system, Arial, sans-serif;
     }
 
-    /* Page is positioning context for decorations; footer sticks to bottom */
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      position: relative;           /* anchors owl/rabbit/flower */
+    /* Layout: page is positioning context; footer sticks to bottom */
+    .page{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      position:relative; /* anchors owl/rabbit */
     }
 
-    /* Keep main content above the decorative images */
-    .content {
-      flex: 1;
-      max-width: 860px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 18px 16px 12px;
-      position: relative;
-      z-index: 1;
-      text-align: center;
+    .content{
+      flex:1;
+      max-width:860px;
+      width:100%;
+      margin:0 auto;
+      padding:18px 16px 12px;
+      position:relative;
+      z-index:1;          /* keep above decorations */
+      text-align:center;
     }
 
     /* Top hero (boy) */
-    .hero {
-      width: min(540px, 92vw);
-      margin: 8px auto 0;
-      display: block;
-      border-radius: 14px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.08);
+    .hero{
+      width:min(540px,92vw);
+      margin:8px auto 0;
+      display:block;
+      border-radius:14px;
+      box-shadow:0 12px 40px rgba(0,0,0,.08);
     }
 
     /* Title & intro */
-    h1 {
-      font-family: "Mansalva", cursive;
-      font-size: clamp(48px, 8vw, 84px);
-      line-height: 1.05;
-      margin: 14px 0 6px;
+    h1{
+      font-family:"Mansalva", cursive;
+      font-size:clamp(48px,8vw,84px);
+      line-height:1.05;
+      margin:14px 0 6px;
     }
-
-    .intro {
-      max-width: 900px;
-      margin: 10px auto 20px;
-      font-size: clamp(18px, 2.8vw, 24px);
-      line-height: 1.55;
+    .intro{
+      max-width:900px;
+      margin:10px auto 20px;
+      font-size:clamp(18px,2.8vw,24px);
+      line-height:1.55;
     }
 
     /* Shelf centered */
-    .shelf {
-      display: block;
-      width: min(520px, 90vw);
-      height: auto;
-      margin: 12px auto 8px;    /* small gap so the button sits tight under */
+    .shelf{
+      display:block;
+      width:min(520px,90vw);
+      height:auto;
+      margin:12px auto 8px; /* small gap so button sits tight under */
     }
 
-    /* Button tight under shelf */
-    .cta-wrap { margin-top: 0; }
-    .cta {
-      display: inline-block;
-      padding: 12px 30px;
-      background: #fff;
-      color: var(--ink);
-      border: 2.5px solid #222;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: clamp(18px, 2.8vw, 26px);
-      text-decoration: none;
-      box-shadow: 0 6px 20px rgba(0,0,0,.06);
+    /* Button right under shelf */
+    .cta-wrap{ margin-top:0; }
+    .cta{
+      display:inline-block;
+      padding:12px 30px;
+      background:#fff;
+      color:var(--ink);
+      border:2.5px solid #222;
+      border-radius:999px;
+      font-weight:700;
+      font-size:clamp(18px,2.8vw,26px);
+      text-decoration:none;
+      box-shadow:0 6px 20px rgba(0,0,0,.06);
     }
-    .cta:hover { transform: translateY(-1px); }
+    .cta:hover{ transform:translateY(-1px); }
 
-    /* Footer at the very bottom */
-    footer {
-      text-align: center;
-      padding: 18px 10px 22px;
-      font-size: 18px;
-      z-index: 1;
+    /* Footer at page bottom */
+    footer{
+      text-align:center;
+      padding:18px 10px 22px;
+      font-size:18px;
+      z-index:1;
     }
 
-    /* Decorations (under content by z-index) */
- .owl{
-  position: absolute;
-  left: 24px;          /* keep it on the left */
-  top: 470px;
-  width: 200px;
-  height: auto;
-  pointer-events: none;
-  filter: drop-shadow(0 8px 20px rgba(0,0,0,.15));
-  transform: scaleX(-1);           /* ⬅️ mirror horizontally */
-  transform-origin: center center;  /* keeps it flipping in place */
-  z-index: 0;
-}
+    /* Decorations under content (z-index:0) */
+    /* OWL — mirrored, left side, a bit higher than center */
+    .owl{
+      position:absolute;
+      left:24px;
+      top:380px;                 /* adjust to taste */
+      width:200px;               /* prevents “giant” owl */
+      height:auto;
+      pointer-events:none;
+      filter:drop-shadow(0 8px 20px rgba(0,0,0,.15));
+      transform:scaleX(-1);      /* mirror horizontally */
+      transform-origin:center center;
+      z-index:0;
+    }
 
-  .rabbit{
-  position: absolute;
-  right: 16px;        /* corner anchor */
-  left: auto;         /* make sure nothing sets it left */
-  bottom: 0;          /* sit on the bottom edge */
-  width: 210px;
-  height: auto;
-  pointer-events: none;
-  filter: drop-shadow(0 8px 20px rgba(0,0,0,.15));
-  z-index: 0;
-}
+    /* RABBIT — bottom-right corner */
+    .rabbit{
+      position:absolute;
+      right:16px;                /* set to 0 for flush corner, or negative to bleed */
+      left:auto;
+      bottom:0;
+      width:210px;
+      height:auto;
+      pointer-events:none;
+      filter:drop-shadow(0 8px 20px rgba(0,0,0,.15));
+      z-index:0;
+    }
+
+    /* Optional flower (bottom-left) — add Flower.png and uncomment HTML if you want it */
+    .flower{
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:230px;
+      height:auto;
+      pointer-events:none;
+      opacity:.95;
+      z-index:0;
+    }
 
     /* Mobile tweaks */
-    @media (max-width: 700px) {
-      .hero { width: min(520px, 92vw); }
-      .shelf { width: min(440px, 92vw); }
-  .owl { left: 8px; top: 520px; width: 150px; transform: scaleX(-1); }
-  .rabbit{ right: 8px; left: auto; bottom: 0; width: 160px; }
-}
-      
+    @media (max-width:700px){
+      .hero{ width:min(520px,92vw); }
+      .shelf{ width:min(440px,92vw); }
+      .owl{ left:8px; top:520px; width:150px; transform:scaleX(-1); }
+      .rabbit{ right:8px; left:auto; bottom:0; width:160px; }
+      .flower{ width:170px; }
     }
   </style>
 </head>
@@ -149,10 +160,10 @@
         <strong>Stay curious and kind</strong>
       </p>
 
-      <!-- Centered shelf -->
+      <!-- Shelf centered -->
       <img class="shelf" src="books-shelf.png" alt="Books on a shelf">
 
-      <!-- Button right under the shelf -->
+      <!-- Button right under shelf -->
       <div class="cta-wrap">
         <a class="cta"
            href="https://www.amazon.com/Firefly-Owl-Little-Traveler-Luciérnaga/dp/B0FBTH3V2Y/ref=sr_1_1?crid=QZS8QMOHWM5B&dib=eyJ2IjoiMSJ9.FH83Ypdbzk05KbmCp2iT5AGwPrldGzB9a32jJQ0yXBzGjHj071QN20LucGBJIEps.WvOtN-CwBB3BKuAbEhGWsmvK3BnLrhBdSeK4Xo87GzQ&dib_tag=se&keywords=little+traveler+owl+firefly&qid=1757053378&sprefix=%2Caps%2C159&sr=8-1"
@@ -165,7 +176,7 @@
     <footer>© Little Traveller Press, 2025</footer>
 
     <!-- Decorations positioned relative to the page -->
-    <img class="flower" src="Flower.png" alt="Lavender vine">
+    <!-- <img class="flower" src="Flower.png" alt="Lavender vine"> --> <!-- optional -->
     <img class="owl" src="owl.png" alt="Owl on a branch">
     <img class="rabbit" src="rabbit.png" alt="Rabbit in grass">
   </main>
