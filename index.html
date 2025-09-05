@@ -4,86 +4,52 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Little Traveller World</title>
-  <meta name="description" content="Welcome to the world of Little Traveller—read the first book and explore cozy stories." />
-  <link rel="icon" href="assets/owl.png">
+  <meta name="description" content="Welcome to the world of Little Traveller." />
+  <link rel="icon" href="owl.png">
   <style>
-    :root {
-      --ink: #1b1b1b;
-      --soft: #666;
-      --accent: #3a7b5c;    /* button color */
-      --accent-ink: #fff;
-      --paper: #fffdf7;
-    }
-    html,body { margin:0; padding:0; background:var(--paper); color:var(--ink); font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, Arial, sans-serif; }
-    .wrap {
-      max-width: 980px; margin: 0 auto; padding: 28px 18px 80px;
-      position: relative;
-    }
-    header { text-align:center; }
-    .title {
-      font-size: clamp(38px, 6vw, 64px);
-      font-weight: 800;
-      letter-spacing: 1px;
-      margin: 8px 0 6px;
-    }
-    .tagline {
-      max-width: 720px; margin: 0 auto 26px; line-height: 1.55; color: var(--soft);
-      font-size: clamp(16px, 2.2vw, 18px);
-    }
-    .hero {
-      width: min(820px, 92vw);
-      aspect-ratio: 16/9; 
-      margin: 8px auto 6px;
-      background: url("assets/hero-boy.png") center/cover no-repeat;
-      border-radius: 16px;
-      box-shadow: 0 8px 40px rgba(0,0,0,.08);
-    }
-    .cta {
-      display:inline-block; margin: 18px auto 0; padding: 14px 26px;
-      background: var(--accent); color: var(--accent-ink); text-decoration: none;
-      border-radius: 999px; font-weight: 700; font-size: 18px;
-      box-shadow: 0 6px 20px rgba(58,123,92,.25);
-      transition: transform .08s ease, box-shadow .2s ease, opacity .2s ease;
-    }
-    .cta:hover { transform: translateY(-1px); box-shadow: 0 10px 26px rgba(58,123,92,.28); }
-    .cta:active { transform: translateY(0); }
-
-    /* Decorative illustrations positioned at the edges */
-    .deco { position: absolute; pointer-events: none; filter: drop-shadow(0 6px 18px rgba(0,0,0,.12)); }
-    .deco.owl    { left: -30px; bottom: 180px; width: 180px; }
-    .deco.rabbit { right: -22px; bottom: 40px;  width: 210px; }
-    .deco.flowers{ left: -14px; bottom: 0;      width: 180px; transform: rotate(-2deg); }
-
-    footer { text-align:center; margin-top: 56px; color: #777; font-size: 14px; }
-    @media (max-width: 700px){
-      .deco.owl { width: 120px; left: -16px; bottom: 220px; }
-      .deco.rabbit { width: 150px; right: -12px; bottom: 60px; }
-      .deco.flowers { width: 120px; left: -10px; }
+    :root { --ink:#1b1b1b; --soft:#666; --accent:#3a7b5c; --paper:#fffdf7; }
+    html,body{margin:0;background:var(--paper);color:var(--ink);
+      font-family:ui-rounded,"SF Pro Rounded",system-ui,-apple-system,Arial,sans-serif}
+    .wrap{max-width:980px;margin:0 auto;padding:28px 18px 80px;position:relative}
+    header{text-align:center}
+    .title{font-size:clamp(38px,6vw,64px);font-weight:800;margin:8px 0 6px}
+    .tagline{max-width:720px;margin:0 auto 26px;line-height:1.55;color:var(--soft);
+      font-size:clamp(16px,2.2vw,18px)}
+    .hero{width:min(820px,92vw);aspect-ratio:16/9;margin:8px auto 6px;
+      background:url("hero-boy.png") center/cover no-repeat;border-radius:16px;
+      box-shadow:0 8px 40px rgba(0,0,0,.08)}
+    .cta{display:inline-block;margin:18px auto 0;padding:14px 26px;border-radius:999px;
+      background:var(--accent);color:#fff;text-decoration:none;font-weight:700;font-size:18px;
+      box-shadow:0 6px 20px rgba(58,123,92,.25)}
+    .cta:hover{transform:translateY(-1px)}
+    .deco{position:absolute;pointer-events:none;filter:drop-shadow(0 6px 18px rgba(0,0,0,.12))}
+    .deco.owl{left:-30px;bottom:180px;width:180px}
+    .deco.rabbit{right:-22px;bottom:40px;width:210px}
+    .deco.flowers{left:-14px;bottom:0;width:180px;transform:rotate(-2deg)}
+    footer{text-align:center;margin-top:56px;color:#777;font-size:14px}
+    @media (max-width:700px){
+      .deco.owl{width:120px;left:-16px;bottom:220px}
+      .deco.rabbit{width:150px;right:-12px;bottom:60px}
+      .deco.flowers{width:120px;left:-10px}
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <!-- Decorations -->
-    <img class="deco owl"    src="assets/owl.png"     alt="Owl on a branch">
-    <img class="deco rabbit" src="assets/rabbit.png"  alt="Rabbit in grass">
-    <img class="deco flowers"src="assets/flowers.png" alt="Lavender">
+    <!-- decorations using your file names at repo root -->
+    <img class="deco owl"     src="owl.png"     alt="Owl on a branch">
+    <img class="deco rabbit"  src="rabbit.png"  alt="Rabbit in grass">
+    <img class="deco flowers" src="Flower.png"  alt="Lavender">
 
     <header>
       <h1 class="title">Little Traveller World</h1>
-      <p class="tagline">
-        Welcome to the World of Little Traveller, Fellow Explorer! Here you can explore new stories,
-        learn about new things, and meet new friends. Don’t forget to stop by our magic shop—
-        it has lots of goodies in it! Stay curious and kind.
-      </p>
+      <p class="tagline">Welcome to the World of Little Traveller, Fellow Explorer! Stay curious and kind.</p>
       <div class="hero" role="img" aria-label="Little Traveller lying in the grass with a butterfly"></div>
 
-      <!-- Your one button -->
+      <!-- one button -->
       <a class="cta"
          href="https://www.amazon.com/Firefly-Owl-Little-Traveler-Luciérnaga/dp/B0FBTH3V2Y/ref=sr_1_1?crid=QZS8QMOHWM5B&dib=eyJ2IjoiMSJ9.FH83Ypdbzk05KbmCp2iT5AGwPrldGzB9a32jJQ0yXBzGjHj071QN20LucGBJIEps.WvOtN-CwBB3BKuAbEhGWsmvK3BnLrhBdSeK4Xo87GzQ&dib_tag=se&keywords=little+traveler+owl+firefly&qid=1757053378&sprefix=%2Caps%2C159&sr=8-1"
-         target="_blank" rel="noopener noreferrer">
-        Read a book
-      </a>
+         target="_blank" rel="noopener noreferrer">Read a book</a>
     </header>
 
     <footer>© Little Traveller Press, 2025</footer>
