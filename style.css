@@ -76,7 +76,7 @@ h1 {
 .btn:hover { background:#000; color:#fff; transform: translateY(-1px); }
 .btn:active { transform: translateY(0) scale(0.98); }
 
-/* ---------- Decorations ---------- */
+/* ---------- Decorations (desktop/tablet) ---------- */
 .owl {
   position: absolute;
   right: clamp(24px, 4vw, 60px);
@@ -113,25 +113,20 @@ footer {
     width: 90vw;
     font-size: clamp(16px, 4.2vw, 18px);
     line-height: 1.45;
-    margin: 0 auto 14px;
+    margin: 0 auto 12px; /* a touch tighter */
   }
 
-  .bookshelf { width: min(70vw, 300px); margin-top: clamp(6px, 2vh, 16px); }
+  /* Move shelf & button slightly UP (about ~8–10px overall) */
+  .bookshelf { width: min(70vw, 300px); margin-top: clamp(0px, 1vh, 10px); }
 
   .btn {
     font-size: clamp(16px, 4.4vw, 18px);
     padding: 12px 22px;
-    margin: 12px auto 24px;
+    margin: 8px auto 24px; /* moved up a little */
   }
 
-  /* Owl higher and smaller so it avoids text */
-  .owl {
-    top: 16vh;
-    right: 6px;
-    width: min(26vw, 100px);
-    transform: none;
-    z-index: 1;
-  }
+  /* HIDE owl on phones (space saving) */
+  .owl { display: none; }
 
   .rabbit {
     left: 6px;
