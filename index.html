@@ -34,6 +34,12 @@
       padding:18px 16px 16px;
       position:relative;              /* for owl/rabbit absolute positioning */
     }
+.page{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  position: relative;   /* <-- add this line */
+}
 
     /* Top hero (boy) — at the very top */
     .hero{
@@ -91,6 +97,16 @@
       padding:18px 10px 22px;
       font-size:18px;
     }
+<main class="page">
+  <div class="content">
+    <!-- hero, title, intro, shelf, button, owl ... -->
+  </div>
+
+  <footer>© Little Traveller Press, 2025</footer>
+
+  <!-- Rabbit anchored to the page bottom-left -->
+  <img class="rabbit" src="rabbit.png" alt="Rabbit in grass">
+</main>
 
     /* Decorations (flower intentionally removed) */
     .owl{
@@ -103,15 +119,15 @@
       filter:drop-shadow(0 8px 20px rgba(0,0,0,.15));
       transform:scaleX(-1);          /* flip horizontally; remove if undesired */
    }
-    .rabbit{
-      position:absolute;
-      left:10px;
-      bottom:-20px; /* aligned with footer baseline */
-      width:190px;
-      height:auto;
-      pointer-events:none;
-      filter:drop-shadow(0 8px 20px rgba(0,0,0,.15));
-    }
+ .rabbit{
+  position: absolute;
+  left: 10px;
+  bottom: 18px;          /* not negative */
+  width: 190px;
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,.15));
+}
 
 
     /* Mobile tweaks */
