@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Little Traveller World</title>
 
   <!-- Fonts -->
@@ -11,144 +11,125 @@
   <link href="https://fonts.googleapis.com/css2?family=Mansalva&family=Schoolbell&display=swap" rel="stylesheet">
 
   <style>
-    :root{ --ink:#121212; }
-    html,body{
-      height:100%;
-      margin:0;
-      background:#fff;
-      color:var(--ink);
-      font-family:"Schoolbell", system-ui, -apple-system, Arial, sans-serif;
+    :root { --ink:#121212; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: #fff;
+      color: var(--ink);
+      font-family: "Schoolbell", system-ui, -apple-system, Arial, sans-serif;
     }
 
-    /* Sticky-footer layout: content takes all space, footer sticks to bottom */
-    .page{
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-    }
-    .content{
-      flex:1;                         /* everything above the footer */
-      max-width:820px;
-      width:100%;
-      margin:0 auto;
-      padding:18px 16px 16px;
-      position:relative;              /* for owl/rabbit absolute positioning */
-    }
-.page{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  position: relative;   /* <-- add this line */
-}
-
-    /* Top hero (boy) — at the very top */
-    .hero{
-      width:min(540px,92vw);
-      margin:8px auto 0;
-      display:block;
-      border-radius:14px;
-      box-shadow:0 12px 40px rgba(0,0,0,.08);
+    /* Page uses sticky-footer pattern and is the positioning context */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative; /* anchors owl + rabbit to the page */
     }
 
-    /* Title & intro */
-    h1{
-      font-family:"Mansalva", cursive;
-      font-size:clamp(48px,10vw,86px);
-      line-height:1;
-      text-align:center;
-      margin:12px 0 6px;
-      letter-spacing:.3px;
-    }
-    .intro{
-      max-width:700px;
-      margin:6px auto 18px;
-      text-align:center;
-      font-size:clamp(18px,2.8vw,22px);
-      line-height:1.55;
+    .content {
+      flex: 1;
+      max-width: 820px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 18px 16px 12px;
     }
 
-    /* Shelf near page middle */
-    .shelf{
-      display:block;
-      width:min(520px,86vw);
-      height:auto;
-      margin:10px auto 6px;          /* small bottom gap so button is close */
+    /* Hero at the very top (optional image) */
+    .hero {
+      width: min(540px, 92vw);
+      margin: 8px auto 0;
+      display: block;
+      border-radius: 14px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.08);
     }
 
-    /* Button snug under shelf */
-    .cta-wrap{ text-align:center; margin-top:0; }
-    .cta{
-      display:inline-block;
-      padding:12px 30px;
-      background:#fff;
-      color:var(--ink);
-      border:2.5px solid #222;
-      border-radius:999px;
-      font-weight:700;
-      font-size:clamp(18px,2.8vw,24px);
-      text-decoration:none;
-      box-shadow:0 6px 20px rgba(0,0,0,.06);
+    h1 {
+      font-family: "Mansalva", cursive;
+      font-size: clamp(48px, 10vw, 86px);
+      line-height: 1;
+      text-align: center;
+      margin: 12px 0 6px;
     }
-    .cta:hover{ transform:translateY(-1px); }
 
-    /* Footer pinned to the very bottom */
-    footer{
-      text-align:center;
-      padding:18px 10px 22px;
-      font-size:18px;
+    .intro {
+      max-width: 900px;
+      margin: 8px auto 18px;
+      text-align: center;
+      font-size: clamp(18px, 2.8vw, 24px);
+      line-height: 1.55;
     }
-<main class="page">
-  <div class="content">
-    <!-- hero, title, intro, shelf, button, owl ... -->
-  </div>
 
-  <footer>© Little Traveller Press, 2025</footer>
+    /* Shelf centered */
+    .shelf {
+      display: block;
+      width: min(560px, 90vw);
+      margin: 10px auto 6px; /* small gap so button sits right under */
+      height: auto;
+    }
 
-  <!-- Rabbit anchored to the page bottom-left -->
-  <img class="rabbit" src="rabbit.png" alt="Rabbit in grass">
-</main>
+    /* Button tight under shelf */
+    .cta-wrap { text-align: center; margin-top: 0; }
+    .cta {
+      display: inline-block;
+      padding: 12px 30px;
+      background: #fff;
+      color: var(--ink);
+      border: 2.5px solid #222;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: clamp(18px, 2.8vw, 24px);
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(0,0,0,.06);
+    }
+    .cta:hover { transform: translateY(-1px); }
 
-    /* Decorations (flower intentionally removed) */
-    .owl{
-      position:absolute;
-      left:-150px;                   /* far-left so it never crosses text */
-      top:640px;                     /* lower on page */
-      width:210px;
-      height:auto;
-      pointer-events:none;
-      filter:drop-shadow(0 8px 20px rgba(0,0,0,.15));
-      transform:scaleX(-1);          /* flip horizontally; remove if undesired */
-   }
- .rabbit{
-  position: absolute;
-  left: 10px;
-  bottom: 18px;          /* not negative */
-  width: 190px;
-  height: auto;
-  pointer-events: none;
-  filter: drop-shadow(0 8px 20px rgba(0,0,0,.15));
-}
+    /* Footer pinned at the bottom */
+    footer {
+      text-align: center;
+      padding: 18px 10px 22px;
+      font-size: 18px;
+    }
 
+    /* Decorations */
+    .rabbit {
+      position: absolute;
+      left: 10px;       /* bottom-left corner */
+      bottom: 18px;     /* aligned with footer baseline */
+      width: 190px;
+      height: auto;
+      pointer-events: none;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,.15));
+    }
+
+    .owl {
+      position: absolute;
+      right: 16px;      /* stick to right side */
+      top: 420px;       /* vertical placement */
+      width: 210px;
+      height: auto;
+      pointer-events: none;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,.15));
+    }
 
     /* Mobile tweaks */
-    @media (max-width:700px){
-      .hero{ width:min(520px,92vw) }
-      .owl{ left:-108px; top:680px; width:160px; }
-      .rabbit{ left:6px; bottom:0; width:150px; }
-      .shelf{ width:min(440px,90vw) }
+    @media (max-width: 700px) {
+      .hero { width: min(520px, 92vw); }
+      .shelf { width: min(460px, 92vw); }
+      .owl { right: 8px; top: 520px; width: 160px; }
+      .rabbit { left: 6px; bottom: 14px; width: 150px; }
     }
   </style>
 </head>
 <body>
   <main class="page">
     <div class="content">
-      <!-- Boy at the top -->
+      <!-- If you want the boy image at the very top, keep this line; otherwise remove -->
       <img class="hero" src="hero-boy.png" alt="Little traveller resting in the grass">
 
-      <!-- Title -->
       <h1>Little Traveller World</h1>
 
-      <!-- Intro -->
       <p class="intro">
         Welcome to the World of Little Traveller, Fellow Explorer!<br>
         here you can explore new stories, learn about new things and meet new friends.
@@ -156,10 +137,10 @@
         <strong>Stay curious and kind</strong>
       </p>
 
-      <!-- Shelf (mid page) -->
+      <!-- Centered shelf -->
       <img class="shelf" src="books-shelf.png" alt="Books on a shelf">
 
-      <!-- Button close to shelf -->
+      <!-- Button right under the shelf -->
       <div class="cta-wrap">
         <a class="cta"
            href="https://www.amazon.com/Firefly-Owl-Little-Traveler-Luciérnaga/dp/B0FBTH3V2Y/ref=sr_1_1?crid=QZS8QMOHWM5B&dib=eyJ2IjoiMSJ9.FH83Ypdbzk05KbmCp2iT5AGwPrldGzB9a32jJQ0yXBzGjHj071QN20LucGBJIEps.WvOtN-CwBB3BKuAbEhGWsmvK3BnLrhBdSeK4Xo87GzQ&dib_tag=se&keywords=little+traveler+owl+firefly&qid=1757053378&sprefix=%2Caps%2C159&sr=8-1"
@@ -167,14 +148,13 @@
           Explore Stories
         </a>
       </div>
-
-      <!-- Decorations -->
-      <img class="owl" src="owl.png" alt="Owl on a branch">
-      <img class="rabbit" src="rabbit.png" alt="Rabbit in grass">
     </div>
 
-    <!-- Footer at the very bottom -->
     <footer>© Little Traveller Press, 2025</footer>
+
+    <!-- Decorations positioned relative to the page -->
+    <img class="rabbit" src="rabbit.png" alt="Rabbit in grass">
+    <img class="owl" src="owl.png" alt="Owl on a branch">
   </main>
 </body>
 </html>
