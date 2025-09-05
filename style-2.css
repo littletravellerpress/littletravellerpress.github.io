@@ -1,34 +1,126 @@
+/* ---------- Base ---------- */
+:root { --scale: 1.35; } /* overall size for desktop/tablet */
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: "Patrick Hand", cursive, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  color: #000;
+  background: #fff;
+  text-align: center;
+}
+
+/* Main centered column */
+.page {
+  position: relative;
+  min-height: 100vh;
+  padding: calc(18px * var(--scale));
+  display: grid;
+  grid-auto-rows: max-content;
+  justify-items: center;
+  overflow: hidden;
+}
+
+.hero, h1, .intro, .bookshelf, .btn { position: relative; z-index: 2; }
+.owl, .rabbit { position: absolute; z-index: 1; pointer-events: none; }
+
+@supports (height: 100svh) {
+  .page { min-height: 100svh; padding-bottom: calc(18px * var(--scale) + env(safe-area-inset-bottom)); }
+}
+
+/* ---------- Content stack ---------- */
+.hero {
+  width: min(calc(440px * var(--scale)), 90vw);
+  height: auto;
+  margin: 0 auto calc(16px * var(--scale));
+}
+
+h1 {
+  margin: 0 0 calc(16px * var(--scale));
+  font-size: clamp(36px, calc(6.8vw * var(--scale)), 60px);
+  line-height: 1.05;
+}
+
+.intro {
+  width: min(calc(760px * var(--scale)), 92vw);
+  margin: 0 auto calc(28px * var(--scale));
+  font-size: clamp(18px, calc(3vw * var(--scale)), 24px);
+  line-height: 1.55;
+}
+
+.bookshelf {
+  width: min(calc(380px * var(--scale)), 75vw);
+  height: auto;
+  margin: clamp(24px, 10vh, 120px) auto 0;
+}
+
+.btn {
+  display: inline-block;
+  margin: clamp(18px, 4vh, 32px) auto clamp(32px, 7vh, 64px);
+  padding: calc(12px * var(--scale)) calc(32px * var(--scale));
+  font-size: clamp(18px, calc(2.6vw * var(--scale)), 24px);
+  text-decoration: none;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: calc(14px * var(--scale));
+  transition: background .25s, color .25s, transform .06s;
+  box-shadow: 0 1px 0 rgba(0,0,0,.18);
+}
+.btn:hover { background:#000; color:#fff; transform: translateY(-1px); }
+.btn:active { transform: translateY(0) scale(0.98); }
+
+/* ---------- Decorations (desktop/tablet) ---------- */
+.owl {
+  right: clamp(24px, 4vw, 60px);
+  top: 50vh;
+  transform: translateY(-50%);
+  width: min(calc(260px * var(--scale)), 26vw);
+  height: auto;
+}
+
+.rabbit {
+  left: 36px;
+  bottom: 16px;
+  width: min(calc(220px * var(--scale)), 24vw);
+  height: auto;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  position: absolute;
+  left: 0; right: 0; bottom: 8px;
+  color: #333;
+  font-size: clamp(14px, calc(2vw * var(--scale)), 18px);
+}
+
+/* ---------- Mobile layout ---------- */
 @media (max-width: 700px) {
-  :root { --scale: 1.05; }
+  :root { --scale: 1.05; } /* dial down sizes on phones */
 
   .hero { width: min(88vw, 360px); margin: 0 auto 8px; }
   h1    { font-size: clamp(26px, 9vw, 34px); margin: 0 0 8px; }
   .intro {
     width: 90vw;
+    margin: 0 auto 12px;
     font-size: clamp(16px, 4.2vw, 18px);
     line-height: 1.45;
-    margin: 0 auto 12px;
   }
 
-  /* ⬆️ Move shelf further UP so it doesn’t touch rabbit */
-  .bookshelf {
-    width: min(70vw, 300px);
-    margin-top: 4px;      /* was clamp(...) → force smaller top margin */
-    margin-bottom: 8px;   /* add space before button */
-  }
+  /* Keep shelf well above rabbit */
+  .bookshelf { width: min(70vw, 300px); margin-top: 0; margin-bottom: 10px; }
+  .btn { font-size: clamp(16px, 4.4vw, 18px); padding: 12px 22px; margin: 6px auto 22px; }
 
-  .btn {
-    font-size: clamp(16px, 4.4vw, 18px);
-    padding: 12px 22px;
-    margin: 8px auto 24px;
-  }
-
+  /* Hide owl for more space */
   .owl { display: none; }
-  .rabbit {
-    left: 6px;
-    bottom: 6px;
-    width: min(26vw, 100px); /* slightly smaller rabbit */
-  }
 
+  /* Smaller rabbit tucked in corner */
+  .rabbit { left: 6px; bottom: 6px; width: min(24vw, 90px); }
+
+  /* Extra bottom padding so footer never overlaps */
+  .page { padding-bottom: max(18px, 56px); }
   footer { bottom: 6px; font-size: 12px; }
 }
+
+/* ---------- No animations anywhere ---------- */
+* { animation: none !important; }
