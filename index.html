@@ -6,102 +6,96 @@
   <title>Little Traveller World</title>
   <style>
     :root{
-      --ink:#1b1b1b;
-      --soft:#585858;
-      --accent:#3a7b5c;
-      --paper:#ffffff;
+      --ink:#1b1b1b; --soft:#565656; --accent:#3a7b5c; --paper:#ffffff;
     }
     html,body{margin:0;background:var(--paper);color:var(--ink);
       font-family:ui-rounded,"SF Pro Rounded","Trebuchet MS",system-ui,-apple-system,Arial,sans-serif}
-    .wrap{max-width:980px;margin:0 auto;padding:20px 18px 80px;position:relative;min-height:100vh}
-
-    /* Title + flower */
-    h1{font-size:clamp(38px,6vw,64px);margin:14px 0 10px;text-align:center;font-weight:800}
-    .flower-near-title{
-      position:absolute; left:12px; top:72px; width:150px; pointer-events:none;
-      filter: drop-shadow(0 6px 16px rgba(0,0,0,.10));
+    .wrap{
+      max-width:980px; margin:0 auto; padding:22px 18px 110px;  /* extra bottom space for decorations */
+      position:relative; min-height:100vh;
     }
 
-    /* Hero image at top */
+    /* HERO (boy) — smaller than before */
     .hero{
-      width:min(820px,92vw); aspect-ratio:16/9; margin:8px auto 6px;
-      background:url("hero-boy.png") center/cover no-repeat; border-radius:16px;
-      box-shadow:0 8px 40px rgba(0,0,0,.08)
+      width:min(680px,88vw); aspect-ratio:16/9; margin:10px auto 10px;
+      background:url("hero-boy.png") center/cover no-repeat;
+      border-radius:18px; box-shadow:0 10px 40px rgba(0,0,0,.08);
     }
 
-    .intro{
-      max-width:740px; margin:14px auto 24px; text-align:center;
-      line-height:1.55; color:var(--soft); font-size:clamp(16px,2.2vw,18px)
-    }
+    /* Title + intro */
+    h1{font-size:clamp(40px,5.6vw,62px); margin:12px 0 6px; text-align:center; font-weight:900;}
+    .intro{max-width:760px; margin:6px auto 20px; text-align:center; line-height:1.55; color:var(--soft);}
 
-    /* Bigger bookshelf centered */
-    .shelf{display:block; margin:10px auto 8px; width:min(520px,80vw); height:auto}
+    /* Shelf centered & larger as you liked */
+    .shelf{display:block; margin:14px auto 10px; width:min(560px,84vw); height:auto}
 
-    /* CTA button (kept as you liked) */
+    /* Button centered right under shelf */
+    .cta-row{ text-align:center; margin-top:6px; }
     .button{
       display:inline-block; padding:14px 28px; background:var(--accent); color:#fff;
       text-decoration:none; font-weight:800; border-radius:10px; font-size:18px;
-      box-shadow:0 6px 20px rgba(58,123,92,.25)
+      box-shadow:0 6px 20px rgba(58,123,92,.25);
     }
-    .button:hover{filter:brightness(1.03)}
+    .button:hover{ filter:brightness(1.03); }
 
-    /* Decorative animals */
-    .owl{
-      position:absolute; left:-8px; top:50%; transform:translateY(-50%);
-      width:220px; pointer-events:none; filter:drop-shadow(0 6px 18px rgba(0,0,0,.12));
+    /* Decorations */
+    .owl{                    /* left side, vertically centered relative to the page content */
+      position:absolute; left:-8px; top:48%; transform:translateY(-50%);
+      width:200px; pointer-events:none; filter:drop-shadow(0 6px 18px rgba(0,0,0,.12));
     }
-    .rabbit-fixed{
-      position:fixed; right:12px; bottom:8px; width:190px; pointer-events:none;
+    .rabbit{                 /* bottom-right, not fixed */
+      position:absolute; right:14px; bottom:16px; width:180px; pointer-events:none;
       filter:drop-shadow(0 6px 18px rgba(0,0,0,.12));
     }
+    .flower{                 /* moved down near footer (bottom-left) */
+      position:absolute; left:12px; bottom:18px; width:160px; pointer-events:none;
+      filter:drop-shadow(0 6px 16px rgba(0,0,0,.10));
+    }
 
-    footer{ text-align:center; margin-top:54px; color:#777; font-size:14px }
+    footer{ text-align:center; margin-top:46px; color:#777; font-size:14px }
 
     /* Mobile tweaks */
     @media (max-width: 700px){
-      .flower-near-title{ width:110px; top:62px; left:6px }
-      .owl{ width:150px; left:-12px }
-      .rabbit-fixed{ width:140px; right:6px; bottom:4px }
-      .shelf{ width:min(400px,86vw) }
+      .hero{ width:min(520px,92vw) }
+      .owl{ width:140px; left:-14px; top:45% }
+      .rabbit{ width:140px; right:8px; bottom:10px }
+      .flower{ width:120px; left:6px; bottom:10px }
+      .shelf{ width:min(420px,88vw) }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <!-- Flower near title -->
-    <img class="flower-near-title" src="Flower.png" alt="Lavender decoration">
-
-    <!-- Owl on the left, vertically centered -->
+    <!-- Owl (left middle) -->
     <img class="owl" src="owl.png" alt="Owl on branch">
 
-    <!-- Hero image (boy) -->
+    <!-- Main hero -->
     <div class="hero" role="img" aria-label="Little traveller resting in the grass"></div>
 
-    <!-- Title -->
+    <!-- Title + intro -->
     <h1>Little Traveller World</h1>
-
-    <!-- Intro -->
     <p class="intro">
       Welcome to the World of Little Traveller, Fellow Explorer! Here you can explore new stories,
-      learn about new things and meet new friends. Don’t forget to participate in our forest
-      challenge and stop by our magic shop — it has lots of goodies in it!<br>
+      learn about new things and meet new friends. Don’t forget to participate in our forest challenge
+      and stop by our magic shop — it has lots of goodies in it!<br>
       <strong>Stay curious and kind</strong>
     </p>
 
-    <!-- Large bookshelf -->
+    <!-- Shelf -->
     <img class="shelf" src="books-shelf.png" alt="Books on a shelf">
 
-    <!-- One button to Amazon -->
-    <p>
+    <!-- Single CTA button directly under the shelf -->
+    <div class="cta-row">
       <a class="button"
         href="https://www.amazon.com/Firefly-Owl-Little-Traveler-Luciérnaga/dp/B0FBTH3V2Y/ref=sr_1_1?crid=QZS8QMOHWM5B&dib=eyJ2IjoiMSJ9.FH83Ypdbzk05KbmCp2iT5AGwPrldGzB9a32jJQ0yXBzGjHj071QN20LucGBJIEps.WvOtN-CwBB3BKuAbEhGWsmvK3BnLrhBdSeK4Xo87GzQ&dib_tag=se&keywords=little+traveler+owl+firefly&qid=1757053378&sprefix=%2Caps%2C159&sr=8-1"
         target="_blank" rel="noopener noreferrer">
         Read a book
       </a>
-    </p>
+    </div>
 
-    <!-- Rabbit in bottom-right corner -->
-    <img class="rabbit-fixed" src="rabbit.png" alt="Rabbit in grass">
+    <!-- Bottom decorations -->
+    <img class="rabbit" src="rabbit.png" alt="Rabbit in grass">
+    <img class="flower" src="Flower.png" alt="Lavender decoration">
 
     <footer>© Little Traveller Press, 2025</footer>
   </div>
