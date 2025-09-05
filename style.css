@@ -139,6 +139,7 @@ footer {
 
 /* ---------- Small-screen tweaks ---------- */
 /* ---------- Mobile layout ---------- */
+/* ---------- Mobile layout ---------- */
 @media (max-width: 700px) {
   /* dial the overall size down a bit on phones */
   :root { --scale: 1.05; }
@@ -181,8 +182,3 @@ footer {
 
   footer { bottom: 6px; font-size: 12px; }
 }
-
-
-  footer { bottom: 6px; font-size: 12px; }
-}
-
