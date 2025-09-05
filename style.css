@@ -1,7 +1,6 @@
 /* ---------- Base ---------- */
 :root{
-  /* whole-page scale: bump to make everything larger */
-  --scale: 1.35;  /* was 1.25 */
+  --scale: 1.35;  /* was 1.25: a touch bigger overall */
 }
 
 * { box-sizing: border-box; }
@@ -19,7 +18,12 @@ body {
   position: relative;
   min-height: 100vh;
   padding: calc(18px * var(--scale));
-  overflow: hidden; /* keep edges clean */
+  overflow: hidden;
+
+  /* NEW: guarantee perfect horizontal centering for the main column */
+  display: grid;
+  grid-auto-rows: max-content;
+  justify-items: center;    /* <- centers hero/title/text/shelf/button exactly */
 }
 
 /* ---------- Hero / Title / Text ---------- */
@@ -44,19 +48,17 @@ h1 {
 }
 
 /* ---------- Shelf + Button ---------- */
-/* Move the block lower toward center */
+/* EDIT: push this block a bit LOWER and ensure it’s centered */
 .bookshelf {
   display: block;
   width: min(calc(380px * var(--scale)), 75vw);
   height: auto;
-  /* push DOWN below the intro */
-  margin: clamp(24px, 9vh, 120px) auto 0;
+  margin: clamp(24px, 12vh, 140px) auto 0; /* was 9vh → 12vh */
 }
 
-/* Button — centered and a bit lower */
 .btn {
   display: inline-block;
-  margin: clamp(16px, 3vh, 28px) auto clamp(28px, 6vh, 56px);
+  margin: clamp(18px, 4vh, 32px) auto clamp(32px, 7vh, 64px); /* slightly lower */
   padding: calc(12px * var(--scale)) calc(32px * var(--scale));
   font-size: clamp(18px, calc(2.6vw * var(--scale)), 24px);
   text-decoration: none;
@@ -69,17 +71,17 @@ h1 {
 .btn:active { transform: scale(0.98); }
 
 /* ---------- Decorations ---------- */
-/* Owl: right side, higher, larger */
+/* Owl: right side (does not affect centering) */
 .owl {
   position: absolute;
   right: clamp(24px, 4vw, 60px);
-  top: 50vh;                       /* smaller = higher; larger = lower */
+  top: 50vh;                       /* tweak 48–52vh to taste */
   transform: translateY(-50%);
   width: min(calc(260px * var(--scale)), 26vw);
   height: auto;
 }
 
-/* Rabbit: bottom-left, larger */
+/* Rabbit: bottom-left */
 .rabbit {
   position: absolute;
   left: 36px;
@@ -99,8 +101,8 @@ footer {
 
 /* ---------- Small-screen tweaks ---------- */
 @media (max-width: 700px) {
-  :root{ --scale: 1.15; }         /* keep proportions but slightly smaller */
-  .bookshelf { margin-top: clamp(16px, 5vh, 64px); }
+  :root{ --scale: 1.15; }
+  .bookshelf { margin-top: clamp(16px, 6vh, 64px); }
   .owl   { top: 56vh; width: min(calc(220px * var(--scale)), 32vw); }
   .rabbit{ width: min(calc(190px * var(--scale)), 30vw); }
 }
