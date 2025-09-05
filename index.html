@@ -4,127 +4,89 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Little Traveller World</title>
-  <meta name="description" content="Welcome to Little Traveller World — explore stories, join forest challenges, and visit our magic shop."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet" />
+  <meta name="description" content="Welcome to the world of Little Traveller—read the first book and explore cozy stories." />
+  <link rel="icon" href="assets/owl.png">
   <style>
-    :root{
-      --ink:#1f2937;          /* dark text */
-      --ink-soft:#374151;     /* softer text */
-      --accent:#0ea5e9;       /* blue accent */
-      --paper:#ffffff;        /* page background */
-      --border:#1111111a;     /* faint border */
-      --shadow:0 8px 30px rgb(0 0 0 / 8%);
-      --radius:22px;
+    :root {
+      --ink: #1b1b1b;
+      --soft: #666;
+      --accent: #3a7b5c;    /* button color */
+      --accent-ink: #fff;
+      --paper: #fffdf7;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0; padding:0; background:var(--paper); color:var(--ink); font-family:"Nunito", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;}
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:1080px; margin:0 auto; padding:20px;}
+    html,body { margin:0; padding:0; background:var(--paper); color:var(--ink); font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, Arial, sans-serif; }
+    .wrap {
+      max-width: 980px; margin: 0 auto; padding: 28px 18px 80px;
+      position: relative;
+    }
+    header { text-align:center; }
+    .title {
+      font-size: clamp(38px, 6vw, 64px);
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin: 8px 0 6px;
+    }
+    .tagline {
+      max-width: 720px; margin: 0 auto 26px; line-height: 1.55; color: var(--soft);
+      font-size: clamp(16px, 2.2vw, 18px);
+    }
+    .hero {
+      width: min(820px, 92vw);
+      aspect-ratio: 16/9; 
+      margin: 8px auto 6px;
+      background: url("assets/hero-boy.png") center/cover no-repeat;
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.08);
+    }
+    .cta {
+      display:inline-block; margin: 18px auto 0; padding: 14px 26px;
+      background: var(--accent); color: var(--accent-ink); text-decoration: none;
+      border-radius: 999px; font-weight: 700; font-size: 18px;
+      box-shadow: 0 6px 20px rgba(58,123,92,.25);
+      transition: transform .08s ease, box-shadow .2s ease, opacity .2s ease;
+    }
+    .cta:hover { transform: translateY(-1px); box-shadow: 0 10px 26px rgba(58,123,92,.28); }
+    .cta:active { transform: translateY(0); }
 
-    /* HERO */
-    .hero{position:relative; overflow:hidden; border-radius:var(--radius); box-shadow:var(--shadow);}
-    .hero img{width:100%; display:block; height:auto;}
-    .hero-title{position:relative; text-align:center; padding:18px 14px 6px}
-    .hero-title h1{font-family:"Chewy", cursive; font-size: clamp(2.2rem, 6vw, 4rem); margin:6px 0 0; letter-spacing:0.4px}
-    .hero-title p{margin:12px auto 0; max-width:800px; line-height:1.55; color:var(--ink-soft); font-size:clamp(1rem, 2.6vw, 1.15rem);}
+    /* Decorative illustrations positioned at the edges */
+    .deco { position: absolute; pointer-events: none; filter: drop-shadow(0 6px 18px rgba(0,0,0,.12)); }
+    .deco.owl    { left: -30px; bottom: 180px; width: 180px; }
+    .deco.rabbit { right: -22px; bottom: 40px;  width: 210px; }
+    .deco.flowers{ left: -14px; bottom: 0;      width: 180px; transform: rotate(-2deg); }
 
-    /* GRID */
-    .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:28px; margin:36px 0;}
-    @media (max-width:860px){ .grid{grid-template-columns:1fr;} }
-
-    .card{background:#fff; border-radius:26px; border:1px solid var(--border); box-shadow:var(--shadow); display:flex; align-items:center; gap:18px; padding:18px; min-height:170px; position:relative}
-    .card img.thumb{width:180px; height:auto; border-radius:18px; flex-shrink:0}
-    .card h3{margin:4px 0 8px; font-size:1.35rem}
-    .card p{margin:0; color:var(--ink-soft)}
-
-    .cta{display:inline-flex; align-items:center; gap:10px; font-weight:800; border-radius:999px; padding:10px 16px; border:1px solid var(--border); box-shadow:var(--shadow); background:#fff; transition:transform .04s ease, box-shadow .2s ease}
-    .cta:hover{transform:translateY(-1px)}
-
-    /* FOOTER */
-    footer{margin:48px 0 18px; text-align:center; color:var(--ink-soft)}
-
-    /* Decorative corners (optional images) */
-    .decor{position:fixed; pointer-events:none; opacity:.9; z-index:-1}
-    .owl{left:10px; bottom:120px; width:min(180px, 30vw)}
-    .rabbit{right:10px; bottom:30px; width:min(180px, 30vw)}
-    .flowers{left:6px; top:20%; width:min(120px, 26vw)}
-
+    footer { text-align:center; margin-top: 56px; color: #777; font-size: 14px; }
+    @media (max-width: 700px){
+      .deco.owl { width: 120px; left: -16px; bottom: 220px; }
+      .deco.rabbit { width: 150px; right: -12px; bottom: 60px; }
+      .deco.flowers { width: 120px; left: -10px; }
+    }
   </style>
 </head>
 <body>
-  <!-- Optional watercolor corners. Drop PNGs into /assets and update src paths. Remove if you don't want them fixed. -->
-  <img class="decor owl" src="assets/owl.png" alt="Watercolor owl" />
-  <img class="decor rabbit" src="assets/rabbit.png" alt="Watercolor rabbit" />
-  <img class="decor flowers" src="assets/flowers.png" alt="Watercolor flowers" />
+  <div class="wrap">
+    <!-- Decorations -->
+    <img class="deco owl"    src="assets/owl.png"     alt="Owl on a branch">
+    <img class="deco rabbit" src="assets/rabbit.png"  alt="Rabbit in grass">
+    <img class="deco flowers"src="assets/flowers.png" alt="Lavender">
 
-  <main class="wrap">
-    <!-- HERO IMAGE -->
-    <section class="hero">
-      <!-- Replace with your hero illustration. Recommended width ≥1600px. -->
-      <img src="assets/hero.jpg" alt="Little traveller resting in the grass" />
-    </section>
-
-    <!-- TITLE + INTRO -->
-    <section class="hero-title">
-      <h1>Little Traveller World</h1>
-      <p>
-        Welcome to the World of Little Traveller, Fellow Explorer! Here you can explore new stories, learn about new things and meet new friends. Don’t forget to participate in our forest challenge and stop by our magic shop — it has lots of goodies in it!<br/>
-        <strong>Stay curious and kind.</strong>
+    <header>
+      <h1 class="title">Little Traveller World</h1>
+      <p class="tagline">
+        Welcome to the World of Little Traveller, Fellow Explorer! Here you can explore new stories,
+        learn about new things, and meet new friends. Don’t forget to stop by our magic shop—
+        it has lots of goodies in it! Stay curious and kind.
       </p>
-    </section>
+      <div class="hero" role="img" aria-label="Little Traveller lying in the grass with a butterfly"></div>
 
-    <!-- FEATURE CARDS -->
-    <section class="grid">
-      <article class="card">
-        <img class="thumb" src="assets/explore-stories.png" alt="Open book with forest"/>
-        <div>
-          <h3>Explore Stories</h3>
-          <p>Read sample chapters, meet characters, and download activity sheets.</p>
-          <p style="margin-top:12px"><a class="cta" href="stories.html">Start reading →</a></p>
-        </div>
-      </article>
+      <!-- Your one button -->
+      <a class="cta"
+         href="https://www.amazon.com/Firefly-Owl-Little-Traveler-Luciérnaga/dp/B0FBTH3V2Y/ref=sr_1_1?crid=QZS8QMOHWM5B&dib=eyJ2IjoiMSJ9.FH83Ypdbzk05KbmCp2iT5AGwPrldGzB9a32jJQ0yXBzGjHj071QN20LucGBJIEps.WvOtN-CwBB3BKuAbEhGWsmvK3BnLrhBdSeK4Xo87GzQ&dib_tag=se&keywords=little+traveler+owl+firefly&qid=1757053378&sprefix=%2Caps%2C159&sr=8-1"
+         target="_blank" rel="noopener noreferrer">
+        Read a book
+      </a>
+    </header>
 
-      <article class="card">
-        <img class="thumb" src="assets/challenge-map.png" alt="Treasure map"/>
-        <div>
-          <h3>Participate in Challenge</h3>
-          <p>Join the forest challenge, collect badges, and unlock a secret postcard.</p>
-          <p style="margin-top:12px"><a class="cta" href="challenge.html">Join the challenge →</a></p>
-        </div>
-      </article>
-
-      <article class="card">
-        <img class="thumb" src="assets/shop-shelf.png" alt="Toy shelf"/>
-        <div>
-          <h3>Shop Online</h3>
-          <p>Books, stickers, and printable goodies. Ships worldwide.</p>
-          <p style="margin-top:12px"><a class="cta" href="shop.html">Visit the shop →</a></p>
-        </div>
-      </article>
-
-      <article class="card">
-        <img class="thumb" src="assets/newsletter.png" alt="Butterfly over letter"/>
-        <div>
-          <h3>Get updates</h3>
-          <p>New releases, freebies, and challenges. No spam, ever.</p>
-          <p style="margin-top:12px"><a class="cta" href="#" id="subscribeLink">Subscribe →</a></p>
-        </div>
-      </article>
-    </section>
-
-    <footer>
-      <p>© Little Traveller Press, 2025</p>
-    </footer>
-  </main>
-
-  <script>
-    // Example: swap this with your email service link or modal later.
-    document.getElementById('subscribeLink').addEventListener('click', function(e){
-      e.preventDefault();
-      alert('Plug in your newsletter service (e.g., Buttondown, MailerLite) and point this link there.');
-    });
-  </script>
+    <footer>© Little Traveller Press, 2025</footer>
+  </div>
 </body>
 </html>
