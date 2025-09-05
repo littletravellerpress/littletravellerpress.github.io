@@ -25,6 +25,14 @@ body {
   grid-auto-rows: max-content;
   justify-items: center;    /* <- centers hero/title/text/shelf/button exactly */
 }
+/* Keep the main column above decorative animals */
+.hero, h1, .intro, .bookshelf, .btn { position: relative; z-index: 2; }
+.owl, .rabbit { z-index: 1; pointer-events: none; }
+
+/* iOS address-bar safe height + safe-area padding */
+@supports (height: 100svh) {
+  .page { min-height: 100svh; padding-bottom: calc(18px * var(--scale) + env(safe-area-inset-bottom)); }
+}
 
 /* ---------- Hero / Title / Text ---------- */
 .hero {
@@ -131,8 +139,44 @@ footer {
 
 /* ---------- Small-screen tweaks ---------- */
 @media (max-width: 700px) {
-  :root{ --scale: 1.15; }
-  .bookshelf { margin-top: clamp(16px, 6vh, 64px); }
-  .owl   { top: 56vh; width: min(calc(220px * var(--scale)), 32vw); }
-  .rabbit{ width: min(calc(190px * var(--scale)), 30vw); }
+  /* Scale the whole layout down a bit on phones */
+  :root { --scale: 1.05; }
+
+  .hero { width: min(88vw, 360px); margin: 0 auto 8px; }
+
+  h1 { font-size: clamp(26px, 9vw, 34px); margin: 0 0 8px; }
+
+  .intro {
+    width: 90vw;
+    font-size: clamp(15px, 4.2vw, 18px);
+    line-height: 1.45;
+    margin: 0 auto 16px;
+  }
+
+  /* Center block sits a bit lower but stays compact */
+  .bookshelf { width: min(74vw, 320px); margin-top: clamp(10px, 5vh, 28px); }
+
+  .btn {
+    font-size: clamp(16px, 4.4vw, 18px);
+    padding: 12px 22px;
+    margin: 14px auto 28px;
+  }
+
+  /* Owl: smaller and lower so it doesn't hit the headline/intro */
+  .owl {
+    top: 64vh;          /* move higher/lower by tweaking this (smaller = higher) */
+    right: 6px;
+    width: min(28vw, 120px);
+    transform: translateY(-50%);
+  }
+
+  /* Rabbit: smaller, tucked into the corner so it doesn't crowd the CTA */
+  .rabbit {
+    left: 6px;
+    bottom: 6px;
+    width: min(28vw, 110px);
+  }
+
+  footer { bottom: 6px; font-size: 12px; }
 }
+
