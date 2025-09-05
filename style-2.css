@@ -1,5 +1,5 @@
-/* ---------- Base ---------- */
-:root { --scale: 1.35; } /* overall size for desktop/tablet */
+/* ===== Base ===== */
+:root { --scale: 1.35; }        /* desktop/tablet scale */
 
 * { box-sizing: border-box; }
 html, body { height: 100%; }
@@ -11,14 +11,14 @@ body {
   text-align: center;
 }
 
-/* Main centered column */
+/* Centered column layout that matches your desired laptop screenshot */
 .page {
   position: relative;
   min-height: 100vh;
   padding: calc(18px * var(--scale));
   display: grid;
   grid-auto-rows: max-content;
-  justify-items: center;
+  justify-items: center;     /* hero, title, text, shelf, button are perfectly centered */
   overflow: hidden;
 }
 
@@ -29,33 +29,34 @@ body {
   .page { min-height: 100svh; padding-bottom: calc(18px * var(--scale) + env(safe-area-inset-bottom)); }
 }
 
-/* ---------- Content stack ---------- */
-.hero {
+/* ===== Content stack ===== */
+.hero{
   width: min(calc(440px * var(--scale)), 90vw);
   height: auto;
   margin: 0 auto calc(16px * var(--scale));
 }
 
-h1 {
+h1{
   margin: 0 0 calc(16px * var(--scale));
   font-size: clamp(36px, calc(6.8vw * var(--scale)), 60px);
   line-height: 1.05;
 }
 
-.intro {
+.intro{
   width: min(calc(760px * var(--scale)), 92vw);
   margin: 0 auto calc(28px * var(--scale));
   font-size: clamp(18px, calc(3vw * var(--scale)), 24px);
   line-height: 1.55;
 }
 
-.bookshelf {
+/* Shelf and button positions that match the laptop layout you want */
+.bookshelf{
   width: min(calc(380px * var(--scale)), 75vw);
   height: auto;
   margin: clamp(24px, 10vh, 120px) auto 0;
 }
 
-.btn {
+.btn{
   display: inline-block;
   margin: clamp(18px, 4vh, 32px) auto clamp(32px, 7vh, 64px);
   padding: calc(12px * var(--scale)) calc(32px * var(--scale));
@@ -70,8 +71,9 @@ h1 {
 .btn:hover { background:#000; color:#fff; transform: translateY(-1px); }
 .btn:active { transform: translateY(0) scale(0.98); }
 
-/* ---------- Decorations (desktop/tablet) ---------- */
-.owl {
+/* ===== Decorations (desktop/tablet) ===== */
+/* Owl on the right side, vertically centered-ish */
+.owl{
   right: clamp(24px, 4vw, 60px);
   top: 50vh;
   transform: translateY(-50%);
@@ -79,48 +81,49 @@ h1 {
   height: auto;
 }
 
-.rabbit {
+/* Rabbit bottom-left */
+.rabbit{
   left: 36px;
   bottom: 16px;
   width: min(calc(220px * var(--scale)), 24vw);
   height: auto;
 }
 
-/* ---------- Footer ---------- */
-footer {
+/* Footer */
+footer{
   position: absolute;
   left: 0; right: 0; bottom: 8px;
   color: #333;
   font-size: clamp(14px, calc(2vw * var(--scale)), 18px);
 }
 
-/* ---------- Mobile layout ---------- */
-@media (max-width: 700px) {
-  :root { --scale: 1.05; } /* dial down sizes on phones */
+/* ===== Mobile (phones) ===== */
+@media (max-width: 700px){
+  :root { --scale: 1.05; }      /* shrink overall sizes on phones */
 
   .hero { width: min(88vw, 360px); margin: 0 auto 8px; }
   h1    { font-size: clamp(26px, 9vw, 34px); margin: 0 0 8px; }
-  .intro {
+  .intro{
     width: 90vw;
     margin: 0 auto 12px;
     font-size: clamp(16px, 4.2vw, 18px);
     line-height: 1.45;
   }
 
-  /* Keep shelf well above rabbit */
-  .bookshelf { width: min(70vw, 300px); margin-top: 0; margin-bottom: 10px; }
-  .btn { font-size: clamp(16px, 4.4vw, 18px); padding: 12px 22px; margin: 6px auto 22px; }
+  /* Keep shelf above rabbit, with a visible gap */
+  .bookshelf{ width: min(70vw, 300px); margin-top: 0; margin-bottom: 10px; }
+  .btn{ font-size: clamp(16px, 4.4vw, 18px); padding: 12px 22px; margin: 6px auto 22px; }
 
-  /* Hide owl for more space */
-  .owl { display: none; }
+  /* Hide owl to prevent crowding */
+  .owl{ display: none; }
 
-  /* Smaller rabbit tucked in corner */
-  .rabbit { left: 6px; bottom: 6px; width: min(24vw, 90px); }
+  /* Smaller rabbit tucked deep into the corner */
+  .rabbit{ left: 6px; bottom: 6px; width: min(24vw, 90px); }
 
-  /* Extra bottom padding so footer never overlaps */
-  .page { padding-bottom: max(18px, 56px); }
-  footer { bottom: 6px; font-size: 12px; }
+  /* Keep footer clear */
+  .page{ padding-bottom: max(18px, 56px); }
+  footer{ bottom: 6px; font-size: 12px; }
 }
 
-/* ---------- No animations anywhere ---------- */
+/* ===== No animations anywhere (stable layout) ===== */
 * { animation: none !important; }
