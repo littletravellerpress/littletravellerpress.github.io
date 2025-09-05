@@ -12,6 +12,7 @@
 
   <style>
     :root { --ink:#121212; }
+
     html, body {
       height: 100%;
       margin: 0;
@@ -20,23 +21,27 @@
       font-family: "Schoolbell", system-ui, -apple-system, Arial, sans-serif;
     }
 
-    /* Page uses sticky-footer pattern and is the positioning context */
+    /* Page is positioning context for decorations; footer sticks to bottom */
     .page {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      position: relative; /* anchors owl + rabbit to the page */
+      position: relative;           /* anchors owl/rabbit/flower */
     }
 
+    /* Keep main content above the decorative images */
     .content {
       flex: 1;
-      max-width: 820px;
+      max-width: 860px;
       width: 100%;
       margin: 0 auto;
       padding: 18px 16px 12px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
     }
 
-    /* Hero at the very top (optional image) */
+    /* Top hero (boy) */
     .hero {
       width: min(540px, 92vw);
       margin: 8px auto 0;
@@ -45,18 +50,17 @@
       box-shadow: 0 12px 40px rgba(0,0,0,.08);
     }
 
+    /* Title & intro */
     h1 {
       font-family: "Mansalva", cursive;
-      font-size: clamp(48px, 10vw, 86px);
-      line-height: 1;
-      text-align: center;
-      margin: 12px 0 6px;
+      font-size: clamp(48px, 8vw, 84px);
+      line-height: 1.05;
+      margin: 14px 0 6px;
     }
 
     .intro {
       max-width: 900px;
-      margin: 8px auto 18px;
-      text-align: center;
+      margin: 10px auto 20px;
       font-size: clamp(18px, 2.8vw, 24px);
       line-height: 1.55;
     }
@@ -64,13 +68,13 @@
     /* Shelf centered */
     .shelf {
       display: block;
-      width: min(560px, 90vw);
-      margin: 10px auto 6px; /* small gap so button sits right under */
+      width: min(520px, 90vw);
       height: auto;
+      margin: 12px auto 8px;    /* small gap so the button sits tight under */
     }
 
     /* Button tight under shelf */
-    .cta-wrap { text-align: center; margin-top: 0; }
+    .cta-wrap { margin-top: 0; }
     .cta {
       display: inline-block;
       padding: 12px 30px;
@@ -79,53 +83,57 @@
       border: 2.5px solid #222;
       border-radius: 999px;
       font-weight: 700;
-      font-size: clamp(18px, 2.8vw, 24px);
+      font-size: clamp(18px, 2.8vw, 26px);
       text-decoration: none;
       box-shadow: 0 6px 20px rgba(0,0,0,.06);
     }
     .cta:hover { transform: translateY(-1px); }
 
-    /* Footer pinned at the bottom */
+    /* Footer at the very bottom */
     footer {
       text-align: center;
       padding: 18px 10px 22px;
       font-size: 18px;
+      z-index: 1;
     }
 
-    /* Decorations */
-    .rabbit {
+    /* Decorations (under content by z-index) */
+    .owl {
       position: absolute;
-      left: 10px;       /* bottom-left corner */
-      bottom: 18px;     /* aligned with footer baseline */
-      width: 190px;
+      left: 24px;           /* left side */
+      top: 470px;           /* mid page */
+      width: 200px;         /* controlled size so it’s not huge */
       height: auto;
       pointer-events: none;
       filter: drop-shadow(0 8px 20px rgba(0,0,0,.15));
+      z-index: 0;
     }
 
-    .owl {
+    .rabbit {
       position: absolute;
-      right: 16px;      /* stick to right side */
-      top: 420px;       /* vertical placement */
+      right: 22px;          /* bottom-right */
+      bottom: 18px;
       width: 210px;
       height: auto;
       pointer-events: none;
       filter: drop-shadow(0 8px 20px rgba(0,0,0,.15));
+      z-index: 0;
     }
 
     /* Mobile tweaks */
     @media (max-width: 700px) {
       .hero { width: min(520px, 92vw); }
-      .shelf { width: min(460px, 92vw); }
-      .owl { right: 8px; top: 520px; width: 160px; }
-      .rabbit { left: 6px; bottom: 14px; width: 150px; }
+      .shelf { width: min(440px, 92vw); }
+      .owl { left: 8px; top: 520px; width: 150px; }
+      .rabbit { right: 8px; bottom: 14px; width: 160px; }
+      
     }
   </style>
 </head>
 <body>
   <main class="page">
     <div class="content">
-      <!-- If you want the boy image at the very top, keep this line; otherwise remove -->
+      <!-- Top image -->
       <img class="hero" src="hero-boy.png" alt="Little traveller resting in the grass">
 
       <h1>Little Traveller World</h1>
@@ -153,8 +161,9 @@
     <footer>© Little Traveller Press, 2025</footer>
 
     <!-- Decorations positioned relative to the page -->
-    <img class="rabbit" src="rabbit.png" alt="Rabbit in grass">
+    <img class="flower" src="Flower.png" alt="Lavender vine">
     <img class="owl" src="owl.png" alt="Owl on a branch">
+    <img class="rabbit" src="rabbit.png" alt="Rabbit in grass">
   </main>
 </body>
 </html>
