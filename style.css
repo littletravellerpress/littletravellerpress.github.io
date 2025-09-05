@@ -44,16 +44,20 @@ h1 {
 }
 
 /* ---------- Shelf + Button ---------- */
+/* Bookshelf — move it lower toward center */
 .bookshelf {
   display: block;
-  width: min(calc(380px * var(--scale)), 75vw); /* bigger & centered */
+  width: min(calc(380px * var(--scale)), 75vw);
   height: auto;
-  margin: calc(10px * var(--scale)) auto calc(8px * var(--scale));
+  /* was: margin: calc(10px * var(--scale)) auto calc(8px * var(--scale)); */
+  margin: clamp(20px, 7vh, 80px) auto calc(12px * var(--scale));
 }
 
+/* Button — keep centered and lower it with the shelf */
 .btn {
   display: inline-block;
-  margin: calc(14px * var(--scale)) auto calc(34px * var(--scale));
+  /* was: margin: calc(14px * var(--scale)) auto calc(34px * var(--scale)); */
+  margin: clamp(16px, 3vh, 28px) auto clamp(28px, 6vh, 56px);
   padding: calc(12px * var(--scale)) calc(32px * var(--scale));
   font-size: clamp(18px, calc(2.6vw * var(--scale)), 24px);
   text-decoration: none;
@@ -61,6 +65,8 @@ h1 {
   border: 2px solid #000;
   border-radius: calc(14px * var(--scale));
   transition: background .25s, color .25s, transform .06s;
+}
+
 }
 .btn:hover { background:#000; color:#fff; }
 .btn:active { transform: scale(0.98); }
