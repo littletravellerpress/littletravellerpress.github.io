@@ -98,34 +98,38 @@
     }
 
     /* Decorations (under content by z-index) */
-    .owl {
-      position: absolute;
-      left: 24px;           /* left side */
-      top: 470px;           /* mid page */
-      width: 200px;         /* controlled size so it’s not huge */
-      height: auto;
-      pointer-events: none;
-      filter: drop-shadow(0 8px 20px rgba(0,0,0,.15));
-      z-index: 0;
-    }
+ .owl{
+  position: absolute;
+  left: 24px;          /* keep it on the left */
+  top: 470px;
+  width: 200px;
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,.15));
+  transform: scaleX(-1);           /* ⬅️ mirror horizontally */
+  transform-origin: center center;  /* keeps it flipping in place */
+  z-index: 0;
+}
 
-    .rabbit {
-      position: absolute;
-      right: 22px;          /* bottom-right */
-      bottom: 18px;
-      width: 210px;
-      height: auto;
-      pointer-events: none;
-      filter: drop-shadow(0 8px 20px rgba(0,0,0,.15));
-      z-index: 0;
-    }
+  .rabbit{
+  position: absolute;
+  right: 16px;        /* corner anchor */
+  left: auto;         /* make sure nothing sets it left */
+  bottom: 0;          /* sit on the bottom edge */
+  width: 210px;
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,.15));
+  z-index: 0;
+}
 
     /* Mobile tweaks */
     @media (max-width: 700px) {
       .hero { width: min(520px, 92vw); }
       .shelf { width: min(440px, 92vw); }
-      .owl { left: 8px; top: 520px; width: 150px; }
-      .rabbit { right: 8px; bottom: 14px; width: 160px; }
+  .owl { left: 8px; top: 520px; width: 150px; transform: scaleX(-1); }
+  .rabbit{ right: 8px; left: auto; bottom: 0; width: 160px; }
+}
       
     }
   </style>
