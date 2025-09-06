@@ -60,51 +60,8 @@
     <!-- Decorations -->
     <img src="owl.png" alt="Owl" class="owl">
     <img src="rabbit.png" alt="Rabbit" class="rabbit">
-<div class="butterfly-fly">
-  <img src="butterfly.png?v=6" alt="butterfly">
-</div>
-
     <!-- Footer -->
     <footer>© Little Traveller Press, 2025</footer>
   </main>
-  <!-- TEST: Butterfly (standalone) -->
-<style>
-  .butterfly-test {
-    position: fixed;
-    left: -120px;
-    top: 55vh;
-    width: 100px;
-    pointer-events: none;
-    z-index: 99999;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,.25));
-    animation:
-      butterfly-path 18s linear infinite,
-      butterfly-tilt  0.6s ease-in-out infinite;
-  }
-  @keyframes butterfly-path {
-    0%   { transform: translate(0, 0) rotate(0deg); }
-    20%  { transform: translate(25vw, -8vh) rotate(8deg); }
-    40%  { transform: translate(50vw,  6vh) rotate(-6deg); }
-    60%  { transform: translate(75vw, -10vh) rotate(10deg); }
-    85%  { transform: translate(100vw, -4vh) rotate(-4deg); }
-    100% { transform: translate(115vw, 0) rotate(0deg); }
-  }
-  @keyframes butterfly-tilt {
-    0%,100% { transform-origin: 50% 50%; }
-    50%     { transform-origin: 50% 50%; transform: scaleX(0.95) rotate(2deg); }
-  }
-  /* Force show even if user prefers-reduced-motion (for testing only) */
-  @media (prefers-reduced-motion: reduce) {
-    .butterfly-test { animation: butterfly-path 18s linear infinite !important; }
-  }
-  /* Hide on small screens */
-  @media (max-width: 768px) {
-    .butterfly-test { display: none; }
-  }
-</style>
-
-<img src="butterfly.png?v=2" alt="" class="butterfly-test" aria-hidden="true">
-
-
 </body>
 </html>
