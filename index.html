@@ -63,5 +63,22 @@
     <!-- Footer -->
     <footer>© Little Traveller Press, 2025</footer>
   </main>
+  <!-- Desktop-only butterfly -->
+<img
+  src="butterfly.png"
+  alt="butterfly"
+  class="butterfly-fly"
+  aria-hidden="true"
+/>
+<script>
+  const b = document.querySelector('.butterfly-fly');
+  if (b) {
+    const topVh = 35 + Math.random() * 40;   // between 35vh and 75vh
+    const delay = Math.random() * 6;         // 0–6s delay
+    b.style.top = `${topVh}vh`;
+    b.style.animationDelay = `${delay}s, 0s`; // (path, flutter)
+  }
+</script>
+
 </body>
 </html>
