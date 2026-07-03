@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thank You — Little Traveller Press</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night-0:#060f24;
+    --night-1:#0b1b3a;
+    --night-2:#16285a;
+    --moon:#F3EEDD;
+    --firefly:#E8BD4E;
+    --firefly-soft:#f0cc70;
+    --star:#D9E2F4;
+    --mist:#92A2C6;
+    --line:rgba(160,180,220,.16);
+    --serif:"Arapey", Georgia, serif;
+    --sans:"Inter", system-ui, sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, monospace;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:
+      radial-gradient(600px 400px at 20% 10%, rgba(232,189,78,.05), transparent 60%),
+      radial-gradient(700px 500px at 85% 90%, rgba(146,162,198,.06), transparent 65%),
+      linear-gradient(180deg, var(--night-0), var(--night-1));
+    font-family:var(--sans);color:var(--star);padding:24px;
+    position:relative;overflow:hidden;
+  }
+  .stars{position:absolute;inset:0;pointer-events:none;}
+  .stars span{position:absolute;width:2px;height:2px;background:var(--star);border-radius:50%;opacity:.5;
+    box-shadow:0 0 6px 1px rgba(217,226,244,.6);animation:tw 4s ease-in-out infinite;}
+  .stars span.gold{background:var(--firefly-soft);box-shadow:0 0 8px 2px rgba(232,189,78,.6);}
+  @keyframes tw{0%,100%{opacity:.2;}50%{opacity:.9;}}
+  .card{
+    position:relative;z-index:1;max-width:480px;width:100%;text-align:center;
+    padding:52px 40px;border:1px solid var(--line);border-radius:20px;
+    background:linear-gradient(180deg, rgba(146,162,198,.09), rgba(11,27,58,.55) 40%, rgba(6,15,36,.75));
+    backdrop-filter:blur(6px);
+    box-shadow:0 0 60px -10px rgba(217,226,244,.08), 0 30px 60px -20px rgba(0,0,0,.5);
+  }
+  .moon{width:64px;height:64px;border-radius:50%;margin:0 auto 22px;position:relative;overflow:hidden;
+    background:radial-gradient(circle at 38% 34%, #fffdf3 0%, #F3EEDD 35%, var(--firefly-soft) 68%, #b8934a 100%);
+    box-shadow:0 0 46px 10px rgba(240,204,112,.4), inset -10px -10px 18px rgba(90,60,10,.25);}
+  .moon::before{content:"";position:absolute;inset:0;border-radius:50%;
+    background:
+      radial-gradient(circle at 30% 55%, rgba(90,60,10,.28) 0%, transparent 9%),
+      radial-gradient(circle at 60% 30%, rgba(90,60,10,.22) 0%, transparent 7%),
+      radial-gradient(circle at 68% 68%, rgba(90,60,10,.25) 0%, transparent 8%),
+      radial-gradient(circle at 45% 75%, rgba(90,60,10,.18) 0%, transparent 6%);}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(26px,4.6vw,34px);color:var(--moon);margin:0 0 16px;line-height:1.22;}
+  p{color:var(--mist);line-height:1.65;font-size:16px;margin:0 0 10px;}
+  .fine{font-family:var(--mono);font-size:12px;color:var(--firefly-soft);letter-spacing:.02em;margin-top:22px;}
+  a.home{display:inline-block;margin-top:26px;font-family:var(--mono);font-size:13px;letter-spacing:.03em;
+    color:var(--firefly);border:1px solid var(--line);border-radius:2px;padding:12px 22px;text-decoration:none;
+    transition:background .2s,color .2s,box-shadow .3s;}
+  a.home:hover{background:var(--firefly-soft);color:#10203f;box-shadow:0 0 24px 4px rgba(232,189,78,.55);}
+</style>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+  <div class="card">
+    <div class="moon"></div>
+    <h1>Your Little Explorer Pack<br>is on its way</h1>
+    <p>Thank you for confirming your email. Your free printable pack will land in your inbox shortly.</p>
+    <p class="fine">If it doesn't arrive in a few minutes, please peek into the spam forest 🌙</p>
+    <a class="home" href="/">Back to Little Traveller Press</a>
+  </div>
+  <script>
+    var s=document.getElementById('stars'),n=40;
+    for(var i=0;i<n;i++){
+      var d=document.createElement('span');
+      if(i%6===0) d.className='gold';
+      d.style.left=Math.random()*100+'%';
+      d.style.top=Math.random()*100+'%';
+      d.style.animationDelay=(Math.random()*4)+'s';
+      s.appendChild(d);
+    }
+  </script>
+</body>
+</html>
