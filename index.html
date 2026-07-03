@@ -293,7 +293,7 @@
   .join-intro p.sub{color:var(--mist);margin:0 0 14px;line-height:1.65;max-width:52ch;font-size:16px;}
   .join-intro .join-contents{font-family:var(--mono);font-size:13px;color:var(--firefly-soft);letter-spacing:.01em;line-height:1.75;border-top:1px solid var(--line);padding-top:14px;margin-top:14px;}
   .join-intro .join-contents b{color:var(--firefly);font-weight:600;}
-  .join-panel{padding:38px 46px 42px;}
+  .join-panel{   padding:38px 46px 52px;   min-height:620px; }
 
   /* Native-styled MailerLite embed (overrides ML default look) */
   .ml-form-embedContainer{background:transparent!important;}
@@ -353,7 +353,13 @@
   .ml-form-embedPermissionsOptionsCheckbox .label-description p,
   .ml-form-checkboxRow .label-description p{margin:0!important;font-size:12.5px!important;}
 
-  .ml-form-recaptcha{margin:2px 0 14px!important;float:none!important;transform:scale(.92);transform-origin:0 0;}
+  .ml-form-recaptcha{
+  margin: 10px 0 18px !important;
+  float: none !important;
+  transform: none !important;
+  min-height: 78px;
+  overflow: visible;
+}
 
   .ml-form-embedSubmit{margin:0!important;}
   .ml-form-embedSubmit button{
@@ -397,6 +403,49 @@
     .sound-toggle .wave{animation:none;}
   }
 </style>
+  /* Signup form spacing fix */
+.ml-form-recaptcha{
+  display:block!important;
+  clear:both!important;
+  margin:14px 0 22px!important;
+  min-height:86px!important;
+  transform:none!important;
+  transform-origin:left top!important;
+  overflow:visible!important;
+}
+
+.ml-form-recaptcha > div{
+  margin:0!important;
+}
+
+.join-panel{
+  padding:38px 46px 56px!important;
+  min-height:640px!important;
+}
+
+@media(min-width:761px){
+  .join-grid{
+    align-items:stretch!important;
+  }
+
+  .join-intro,
+  .join-panel{
+    min-height:640px!important;
+  }
+}
+
+@media(max-width:760px){
+  .join-intro,
+  .join-panel{
+    min-height:auto!important;
+  }
+
+  .ml-form-recaptcha{
+    transform:scale(.92)!important;
+    transform-origin:left top!important;
+    min-height:78px!important;
+  }
+}
 </head>
 <body>
 <canvas id="stars"></canvas>
