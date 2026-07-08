@@ -60,6 +60,22 @@
     transition:background .2s,color .2s,box-shadow .3s;}
   a.home:hover{background:var(--firefly-soft);color:#10203f;box-shadow:0 0 24px 4px rgba(232,189,78,.55);}
 
+  /* Desktop-only: larger card, matching the reference proportions */
+  @media(min-width:900px){
+    .card{max-width:760px;padding:80px 88px;border-radius:26px;}
+    .moon{width:132px;height:132px;margin:0 auto 34px;}
+    h1{font-size:44px;margin:0 0 22px;}
+    p{font-size:19px;line-height:1.7;margin:0 0 14px;}
+    .fine{font-size:14px;margin-top:28px;}
+    a.home{font-size:15px;padding:15px 30px;margin-top:32px;}
+  }
+  @media(min-width:1280px){
+    .card{max-width:880px;padding:96px 104px;}
+    .moon{width:150px;height:150px;}
+    h1{font-size:50px;}
+    p{font-size:20px;}
+  }
+
   .dust{
     position:fixed;pointer-events:none;z-index:999;
     top:0;left:0;
